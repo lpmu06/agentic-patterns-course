@@ -35,7 +35,8 @@ class ReflectionAgent:
         client (Groq): An instance of the Groq client to interact with the language model.
     """
 
-    def __init__(self, model: str = "llama-3.3-70b-versatile"):
+    def __init__(self, model: str = "llama3-70b-8192"):
+        print(f"Initializing ReflectionAgent with model: {model}")  # Debug log
         self.client = Groq()
         self.model = model
 
@@ -56,6 +57,7 @@ class ReflectionAgent:
         Returns:
             str: The model-generated response.
         """
+        print(f"Requesting completion with model: {self.model}")  # Debug log
         output = completions_create(self.client, history, self.model)
 
         if verbose > 0:
